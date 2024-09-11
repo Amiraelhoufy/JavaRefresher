@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 // Adapter class to adapt NewEmployee to the Employee type used in the Payroll System
 public class EmployeeAdapterUsingInheritance extends Employee {
 
-  private final NewEmployee newEmployee;
+  //private final NewEmployee newEmployee;
 
   public EmployeeAdapterUsingInheritance(NewEmployee newEmployee) {
     super(
@@ -14,7 +14,7 @@ public class EmployeeAdapterUsingInheritance extends Employee {
         convertPayItems(newEmployee.getNewPayItemList())
     );
     // Store the NewEmployee object for potential future use
-    this.newEmployee = newEmployee;
+    //this.newEmployee = newEmployee;
 
   }
   // Convert new pay items to legacy pay items
