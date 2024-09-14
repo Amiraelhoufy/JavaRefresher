@@ -23,7 +23,7 @@ public class CustomerDiscountStrategyFactory {
       case SILVER:
         return new SilverCustomerDiscountStrategy();
       default:
-        return new NullDiscountStrategy();
+        return new NullDiscountStrategy();  // Default strategy for unknown categories
 //        throw new IllegalArgumentException("unknown customer category");
     }
 

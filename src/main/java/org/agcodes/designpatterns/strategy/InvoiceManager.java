@@ -41,14 +41,13 @@ public class InvoiceManager {
 
     double totalPrice = invoice.getTotalPrice();
     // Apply discount based on customer category
-    double finalPrice = discountStrategy.applyDiscount(totalPrice);
+    double calculatedDiscount = discountStrategy.calculateCategoryDiscount(totalPrice);
+    double finalPrice = totalPrice - calculatedDiscount;
 
     // Print invoice details
     System.out.println("Invoice created for customer: " + customer.getName());
-
     System.out.println("Original Total price: " + totalPrice + " USD");
     System.out.println("Final Total price after discount: " + finalPrice + " USD");
-
 
 
     return invoice;

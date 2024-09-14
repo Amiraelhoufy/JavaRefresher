@@ -5,7 +5,7 @@ import static org.agcodes.designpatterns.strategy.Customer.CustomerCategory.*;
 import java.util.Arrays;
 import java.util.List;
 
-public class DataReader {
+public class CustomerDataReader {
 
   // Static method to load hardcoded data
 public static List<Customer> loadData(){

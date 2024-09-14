@@ -3,8 +3,8 @@ package org.agcodes.designpatterns.strategy;
 public class NewCustomerDiscountStrategy implements ICustomerDiscountStrategy {
 
   @Override
-  public double applyDiscount(double totalPrice) {
+  public double calculateCategoryDiscount(double totalPrice) {
     // No discount
-    return totalPrice;
+    return 0;
   }
 }

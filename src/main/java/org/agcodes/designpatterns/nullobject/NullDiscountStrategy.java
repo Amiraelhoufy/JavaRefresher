@@ -5,8 +5,8 @@ import org.agcodes.designpatterns.strategy.ICustomerDiscountStrategy;
 public class NullDiscountStrategy implements ICustomerDiscountStrategy {
 
   @Override
-  public double applyDiscount(double totalPrice) {
+  public double calculateCategoryDiscount(double totalPrice) {
     // No discount applied
-    return totalPrice;
+    return 0;
   }
 }
