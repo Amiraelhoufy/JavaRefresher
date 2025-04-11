@@ -2,6 +2,8 @@ package org.agcodes.designpatterns.templatemethod;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.agcodes.designpatterns.factorymethod.Payment;
+import org.agcodes.designpatterns.factorymethod.PaymentProcessor;
 import org.agcodes.designpatterns.strategy.Customer;
 import org.agcodes.designpatterns.strategy.Invoice;
 import org.agcodes.designpatterns.strategy.InvoiceLine;
@@ -23,7 +25,7 @@ public List<InvoiceLine> getInvoiceLines(){
 
 protected abstract double calculateDiscount(double totalWithTax);
 
-public Invoice checkout(Customer customer){
+public Invoice checkout(Customer customer, PaymentProcessor paymentProcessor){
 
   Invoice invoice = new Invoice(customer);
   // Add all invoice lines to the invoice
@@ -37,6 +39,11 @@ public Invoice checkout(Customer customer){
   double finalPriceWithTaxesAndDiscount = finalPriceWithTaxes - calculatedDiscount;
 
   // 3- process payment
+  Payment payment = paymentProcessor.processMethod(customer.getID(),finalPriceWithTaxesAndDiscount);
+
+  System.out.println("Payment charge Amount: "+ payment.getChargeAmount());
+  System.out.println("Payment reference Number: "+ payment.getReferenceNumber());
+
   System.out.println("Total Before Tax: " + totalPriceBeforeTax);
   System.out.println("Tax Amount After Tax: " + finalPriceWithTaxes);
   System.out.println("Discount Amount: " + calculatedDiscount);

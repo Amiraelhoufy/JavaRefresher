@@ -1,9 +1,11 @@
 package org.agcodes.designpatterns.strategy;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+import org.agcodes.designpatterns.factorymethod.PaymentProcessor;
+import org.agcodes.designpatterns.factorymethod.PaypalPaymentProcessor;
+import org.agcodes.designpatterns.factorymethod.VisaPaymentProcessor;
 import org.agcodes.designpatterns.templatemethod.InstoreShoppingCart;
 import org.agcodes.designpatterns.templatemethod.OnlineShoppingCart;
 import org.agcodes.designpatterns.templatemethod.ShoppingCart;
@@ -90,12 +92,16 @@ public class Main {
 
       // Using Strategy Manager
 
-    /*  InvoiceManager invoiceManager = new InvoiceManager(customer);
-      invoiceManager.createInvoice(customer,shoppingCart.getInvoiceLines());
-      */
+    /*
+     InvoiceManager invoiceManager = new InvoiceManager(customer);
+     invoiceManager.createInvoice(customer,shoppingCart.getInvoiceLines());
+    */
+      System.out.println("Select Payment Method(Visa | PayPal): ");
+      String paymentMethod = scanner.next().toLowerCase();
+      PaymentProcessor paymentProcessor = paymentMethod.equalsIgnoreCase("visa")? new VisaPaymentProcessor(): new PaypalPaymentProcessor();
 
       // Perform checkout and generate invoice
-      Invoice invoice = shoppingCart.checkout(customer);
+      Invoice invoice = shoppingCart.checkout(customer, paymentProcessor);
 
     }else {
       System.out.println("Customer with ID: " + customerId + " not found!");
